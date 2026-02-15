@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 // import Link from 'next/link'
 import { Modal, Backdrop, Fade } from "@mui/material";
 import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 // import Loader from '../core/loader'
 import SendIcon from "../icons/Send";
@@ -21,9 +22,9 @@ export default function GoToVerse({ open, controller, chapters }) {
     let list = [];
     for (let i = 0; i < numberOfVerses; i++) {
       list.push(
-        <li key={i} value={i + 1}>
+        <MenuItem key={i} value={i + 1}>
           আয়াত {enToBn(i + 1)}
-        </li>
+        </MenuItem>
       );
     }
     return list;
@@ -96,9 +97,9 @@ export default function GoToVerse({ open, controller, chapters }) {
                   >
                     {chapters &&
                       chapters.map((chapter) => (
-                        <li key={chapter.chapterNo} value={chapter.chapterNo}>
+                        <MenuItem key={chapter.chapterNo} value={chapter.chapterNo}>
                           {enToBn(chapter.chapterNo)}. {chapter.name}
-                        </li>
+                        </MenuItem>
                       ))}
                   </Select>
                 )}
