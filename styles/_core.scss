@@ -42,17 +42,14 @@ body {
   padding-bottom: 0;
   padding-right: 24px;
   margin-right: -24px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  overflow-y: scroll;
+  position: relative;
+  min-height: calc(var(--vh, 1vh) * 100 - 54px);
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
 .viewport_no_footer {
-  bottom: 0;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .viewport_surah {
