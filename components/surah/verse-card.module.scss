@@ -1,35 +1,21 @@
-// Responsive wrapper for verse card
 .wrapper {
   display: block;
   border-bottom: 1px solid var(--bdr11);
-  padding-bottom: 32px;
-  padding-top: 32px;
+  padding-bottom: 40px;
+  padding-top: 78px;
+  /* Remove negative bottom margin to prevent sections overlapping on mobile scroll */
   margin-bottom: 0;
   position: relative;
 }
 
-@media (max-width: 600px) {
-  .wrapper {
-    padding-top: 16px;
-    padding-bottom: 16px;
-    margin-bottom: 0;
-  }
-}
-
-// Target marker for scroll, avoid overlap on mobile
 .target {
-  height: 40px;
+  height: calc(100% - 80px);
+  max-height: 80vh;
   width: 100%;
   position: absolute;
-  top: 0;
+  top: 40px;
   left: 0;
   z-index: -1;
-}
-
-@media (max-width: 600px) {
-  .target {
-    display: none;
-  }
 }
 
 .wrapper:last-child {
