@@ -1,12 +1,10 @@
 .wrapper {
   display: block;
   border-bottom: 1px solid var(--bdr11);
-  padding: 40px 0;
-  position: relative;
-}
-
-.wrapper:first-child {
+  padding-bottom: 40px;
   padding-top: 78px;
+  margin-bottom: -38px;
+  position: relative;
 }
 
 .target {
@@ -20,6 +18,7 @@
 }
 
 .wrapper:last-child {
+  margin-bottom: 0;
   border-bottom: none;
   padding-bottom: 0;
 }
