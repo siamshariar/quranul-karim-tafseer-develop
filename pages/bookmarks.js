@@ -35,10 +35,16 @@ export default function Bookmark({ chapters }) {
 
   useEffect(() => {
     const savedBookmarks = localStorage.getItem("bookmarks");
-    const bookmarks = JSON.parse(savedBookmarks);
+
+    let bookmarks = null;
+    try {
+      bookmarks = savedBookmarks ? JSON.parse(savedBookmarks) : null;
+    } catch (e) {
+      bookmarks = null;
+    }
 
     const queryKey = "key";
-    const keyMatcher = router.asPath.match(
+    const keyMatcher = router.asPath?.match(
       new RegExp(`[&?]${queryKey}=(.*?)(&|$)`)
     );
 
@@ -50,40 +56,26 @@ export default function Bookmark({ chapters }) {
       setIsMobile(false);
     }
 
-    if (!keyMatcher) {
+    if (!keyMatcher || !key || !bookmarks || !bookmarks[key]) {
       router.push("/404");
-      return <></>;
-    }
-
-    if (!key) {
-      return <></>;
-    }
-
-    if (!bookmarks[key]) {
-      router.push("/404");
-      return <></>;
+      return;
     }
 
     setBookmarkName(bookmarks[key].name);
 
     let verseStr = "";
 
-    if (bookmarks.hasOwnProperty(key)) {
-      if (bookmarks[key]["entry"].length > 0) {
-        let verseArr = bookmarks[key]["entry"];
-        verseArr.forEach((entry, index) => {
-          verseStr = verseStr + entry.chapter + ":" + entry.verse;
-          if (index < verseArr.length - 1) {
-            verseStr += ",";
-          }
-        });
-      } else {
-        setExists(false);
-      }
+    const entry = bookmarks[key]?.entry;
+    if (Array.isArray(entry) && entry.length > 0) {
+      verseStr = entry
+        .map((en) => `${en.chapter}:${en.verse}`)
+        .join(",");
+    } else {
+      setExists(false);
     }
 
     setBookmarkVersesStr(verseStr);
-  }, [key]);
+  }, [key, router.asPath]);
 
   const { data } = useSWR(
     bookmarkVersesStr,
