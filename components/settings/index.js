@@ -203,7 +203,7 @@ const FontFamily = () => {
             onChange={controlAccordion("font_arabic")}
           >
             <AccordionSummary className={styles.accordion_summary}>
-              <IconButton className={styles.btn}>
+              <IconButton component="span" className={styles.btn}>
                 <span
                   className={
                     expanded !== "font_arabic" ? styles.none : styles.icon
@@ -249,7 +249,7 @@ const FontFamily = () => {
             onChange={controlAccordion("font_trans")}
           >
             <AccordionSummary className={styles.accordion_summary}>
-              <IconButton className={styles.btn}>
+              <IconButton component="span" className={styles.btn}>
                 <span
                   className={
                     expanded !== "font_trans" ? styles.none : styles.icon
@@ -315,7 +315,7 @@ const Theme = () => {
             onChange={controlAccordion("theme")}
           >
             <AccordionSummary className={styles.accordion_summary}>
-              <IconButton className={styles.btn}>
+              <IconButton component="span" className={styles.btn}>
                 <span
                   className={expanded !== "theme" ? styles.none : styles.icon}
                 >

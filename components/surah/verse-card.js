@@ -102,7 +102,7 @@ export default function VerseCard({
         <AccordionSummary className={styles.accordion_summary}>
           <div className={styles.summary_text}>ফুটনোট</div>
           <div className={styles.summary_icon}>
-            <IconButton className={styles.btn}>
+            <IconButton component="span" className={styles.btn}>
               <span className={!expanded ? styles.none : styles.icon}>
                 <UpIcon />
               </span>
